@@ -1,0 +1,9 @@
+#include "qtlogglobal.h"
+
+#include "qlogger.h"
+
+#include "qabstractappender.h"
+
+#include "qtextfileappender.h"
+#include "qconsoleappender.h"
+#include "qdbfileappender.h"
