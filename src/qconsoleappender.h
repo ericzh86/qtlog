@@ -14,8 +14,6 @@ class QTLOGSHARED_EXPORT QConsoleAppender : public QObject, public QAbstractAppe
 public:
 	QConsoleAppender(QObject *parent = 0);
 
-public:
-	bool isOpen() const;
 private:
     void _write(QLogger *logger, QLogger::Level level, const QString &text);
 

@@ -4,25 +4,22 @@
 #include "qtlogglobal.h"
 #include "qlogger.h"
 
-class QLoggerKernel;
+class QLoggerPrivate;
 
 class QTLOGSHARED_EXPORT QAbstractAppender
 {
-    friend class QLoggerKernel;
+    friend class QLoggerPrivate;
 
 public:
     QAbstractAppender();
 
-public:
-    virtual bool isOpen() const { return false; }
 private:
     virtual void _write(QLogger *logger, QLogger::Level level, const QString &text) = 0;
 
 public:
-    QLogger::Levels levels() const;
-public:
     void setLevels(QLogger::Levels levels);
-
+public:
+    QLogger::Levels levels() const;
 private:
     QLogger::Levels _m_levels;
 };

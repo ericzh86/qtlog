@@ -26,11 +26,6 @@ class QTLOGSHARED_EXPORT QLogger : public QObject
     Q_OBJECT
 
 public:
-    QObject *target() const;
-public:
-    quint32 loggerId() const;
-
-public:
     enum Level
     {
         Off     = 0x00, /*!< Off.   */
@@ -49,11 +44,16 @@ public:
     Q_DECLARE_FLAGS(Levels, Level)
 
 public:
+    QObject *target() const;
+public:
+    quint32 loggerId() const;
+
+public:
     void clearLevels();
 public:
     Levels levels() const;
 public:
-    void setLevels(Levels levels);
+    void setLevels(Levels ls);
 
 public:
     void addAppender(QObject *appender);
@@ -394,8 +394,6 @@ private:
     Q_DISABLE_COPY(QLogger)
     Q_DECLARE_PRIVATE(QLogger)
 
-private:
-    QList<QAbstractAppender *> _appenders() const;
 private:
     void _write(Level level, const QString &text);
 };

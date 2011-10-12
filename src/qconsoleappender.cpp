@@ -26,11 +26,6 @@ QConsoleAppender::QConsoleAppender(QObject *parent)
 {
 }
 
-bool QConsoleAppender::isOpen() const
-{
-	return true;
-}
-
 void QConsoleAppender::_write(QLogger *logger, QLogger::Level level, const QString &text)
 {
     // Level check.

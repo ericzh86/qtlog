@@ -23,7 +23,7 @@ win32 {
 
 HEADERS += \
     ../src/qtlogglobal.h \
-    ../src/qloggerkernel.h \
+    ../src/qlogger_p.h \
     ../src/qlogger.h \
     ../src/qabstractappender.h \
     ../src/qdbfileappender.h \
@@ -31,10 +31,9 @@ HEADERS += \
     ../src/qtextfileappender.h
 
 SOURCES += \
-    ../src/qloggerkernel.cpp \
+    ../src/qlogger_p.cpp \
     ../src/qlogger.cpp \
     ../src/qabstractappender.cpp \
     ../src/qdbfileappender.cpp \
     ../src/qconsoleappender.cpp \
     ../src/qtextfileappender.cpp
-
