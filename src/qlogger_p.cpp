@@ -2,7 +2,7 @@
 #include "qabstractappender.h"
 #include <QtCore/QCoreApplication>
 
-quint32 QLoggerPrivate::_s_loggerIdCounter = 0;
+quint32 QLoggerPrivate::_s_loggerIdCounter = 1;
 
 QHash<QObject *, QLogger *> QLoggerPrivate::s_loggers;
 
