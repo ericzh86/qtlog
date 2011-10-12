@@ -16,7 +16,7 @@ public:
 };
 
 QTextFileAppenderPrivate::QTextFileAppenderPrivate()
-: QObjectPrivate()
+    : QObjectPrivate()
 {
 }
 
@@ -30,12 +30,12 @@ QTextFileAppenderPrivate::~QTextFileAppenderPrivate()
 //////////////////////////////////////////////////////////////////////////
 
 QTextFileAppender::QTextFileAppender(QObject *parent)
-: QObject(*new QTextFileAppenderPrivate(), parent)
+    : QObject(*new QTextFileAppenderPrivate(), parent)
 {
 }
 
 QTextFileAppender::QTextFileAppender(QString &fileName, QObject *parent)
-: QObject(*new QTextFileAppenderPrivate(), parent)
+    : QObject(*new QTextFileAppenderPrivate(), parent)
 {
 	setFileName(fileName);
 	if (!open()) {
