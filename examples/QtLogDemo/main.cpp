@@ -7,7 +7,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
 
     // RootLogger的级别设置成为Fatal和Debug.
-    QLogger::rootLogger()->setLevels(QLogger::Levels() | QLogger::Fatal | QLogger::Debug);
+    QtLog::rootLogger()->setLevels(QLogLevels() | QtLog::Fatal | QtLog::Debug);
 
     // 定义一个控制台输出Appender.
     QConsoleAppender consoleAppender;
@@ -16,22 +16,22 @@ int main(int argc, char *argv[])
     // consoleAppender.setLevels(QLogger::All);
 
     // 将ConsoleAppender添加到记录队列中.
-    QLogger::rootLogger()->addAppender(&consoleAppender);
+    QtLog::rootLogger()->addAppender(&consoleAppender);
 
     // 这条消息将被忽略, 因为RootLogger现在只记录Fatal和Debug的.
-    QLogger::rootLogger()->debug("This message will be ignored.");
+    QtLog::rootLogger()->debug("This message will be ignored.");
     // 这条日记将被输出到控制台.
-    QLogger::rootLogger()->fatal("This message will be recorded.");
+    QtLog::rootLogger()->fatal("This message will be recorded.");
 
     // 将记录级别修改为全部记录.
-    QLogger::rootLogger()->setLevels(QLogger::All);
+    QtLog::rootLogger()->setLevels(QtLog::All);
     // SQLITE数据库文件.
-    QDBFileAppender dbfileAppender(QString("test.any"));
+    QSQLiteAppender dbfileAppender(QString("test.any"));
     // 添加进去.
-    QLogger::rootLogger()->addAppender(&dbfileAppender);
+    QtLog::rootLogger()->addAppender(&dbfileAppender);
 
     // 如果编译时候定义了QTLOG_LOCALE_SUPPORT, 写入中文也是可以的.
-    QLogger::rootLogger()->error("这个消息是中文的, 不会被忽略.");
+    QtLog::rootLogger()->error("这个消息是中文的, 不会被忽略.");
 
 
     MainWindow w;

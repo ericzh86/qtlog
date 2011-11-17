@@ -2,28 +2,52 @@
 #define QABSTRACTAPPENDER_H
 
 #include "qtlogglobal.h"
-#include "qlogger.h"
 
-class QLoggerPrivate;
-
-class QTLOGSHARED_EXPORT QAbstractAppender
+#include <QObject>
+class QAbstractAppenderPrivate;
+class QTLOGSHARED_EXPORT QAbstractAppender : public QObject
 {
-    friend class QLoggerPrivate;
+    Q_OBJECT
+
+    // Constructors
+protected:
+    explicit QAbstractAppender(QObject *parent = 0);
+protected:
+    explicit QAbstractAppender(QAbstractAppenderPrivate &dd, QObject *parent = 0);
+
+    // Levels
+public:
+    void setLevels(QLogLevels newLevels);
+public:
+    QLogLevels levels() const;
 
 public:
-    QAbstractAppender();
+    bool isEnabledFor(QLogLevel level) const;
+
+    // Formatter
+public:
+    void setFormatter(QAbstractFormatter *formatter);
+public:
+    QAbstractFormatter *formatter() const;
+
+    //
+protected:
+    virtual void write(QAbstractLogger *logger, QLogLevel level, const QString &text) = 0;
 
 private:
-    virtual void _write(QLogger *logger, QLogger::Level level, const QString &text) = 0;
+    friend class QAbstractLogger;
 
-public:
-    void setLevels(QLogger::Levels levels);
-public:
-    QLogger::Levels levels() const;
 private:
-    QLogger::Levels _m_levels;
+    Q_DISABLE_COPY(QAbstractAppender)
+    Q_DECLARE_PRIVATE(QAbstractAppender)
 };
 
-Q_DECLARE_INTERFACE(QAbstractAppender, "com.zhouj.QtLog.QAbstractAppender/1.0")
+//////////////////////////////////////////////////////////////////////////
+// QAbstractLogger Inline Functions
+
+inline bool QAbstractAppender::isEnabledFor(QLogLevel level) const
+{
+    return (levels() & level);
+}
 
 #endif//QABSTRACTAPPENDER_H

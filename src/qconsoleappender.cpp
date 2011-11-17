@@ -1,19 +1,28 @@
+/*!
+  \class QConsoleAppender
+  \brief The QConsoleAppender class.
+*/
+
 #include "qconsoleappender.h"
 
-#include <QtCore/QTime>
-#include <QtCore/QtDebug>
+////////////////////////////////////////////////////////////////////////////////
+// QConsoleAppenderPrivate
 
-#include "private/qobject_p.h"
-class QConsoleAppenderPrivate : public QObjectPrivate
+#include "private/qabstractappender_p.h"
+
+#include <QtCore/QTextStream>
+
+class QConsoleAppenderPrivate : public QAbstractAppenderPrivate
 {
 	Q_DECLARE_PUBLIC(QConsoleAppender)
+
 public:
 	QConsoleAppenderPrivate();
 	~QConsoleAppenderPrivate();
 };
 
 QConsoleAppenderPrivate::QConsoleAppenderPrivate()
-	: QObjectPrivate()
+    : QAbstractAppenderPrivate()
 {
 }
 
@@ -21,52 +30,28 @@ QConsoleAppenderPrivate::~QConsoleAppenderPrivate()
 {
 }
 
+////////////////////////////////////////////////////////////////////////////////
+// QConsoleAppender
+
+#include "qsimpleformatter.h"
+
+/*!
+  \fn QConsoleAppender::QConsoleAppender(QObject *parent)
+  \brief Constructs an object with parent object \a parent.
+*/
 QConsoleAppender::QConsoleAppender(QObject *parent)
-	: QObject(*new QConsoleAppenderPrivate(), parent)
+    : QAbstractAppender(*new QConsoleAppenderPrivate(), parent)
 {
+    setFormatter(new QSimpleFormatter(false, this));
 }
 
-void QConsoleAppender::_write(QLogger *logger, QLogger::Level level, const QString &text)
+#include <QtDebug>
+
+/*!
+  \fn void QConsoleAppender::write(QAbstractLogger *logger, QLogLevel level, const QString &text)
+  \brief \a logger, \a level and \a text.
+*/
+void QConsoleAppender::write(QAbstractLogger *logger, QLogLevel level, const QString &text)
 {
-    // Level check.
-	if (!(levels() & level)) {
-		return;
-	}
-
-	QObject *target = logger->target();
-	
-	QString targetName = QLatin1String(target->metaObject()->className());
-	if (!target->objectName().isEmpty())
-		targetName += "#" + target->objectName();
-
-	QString now = QTime::currentTime().toString("hh:mm:ss.zzz");
-
-	QString targetAddress = QString("%1").arg((qulonglong)target, 8, 10, QLatin1Char('0'));
-
-	switch (level) {
-        case QLogger::Off:
-            // Nothing.
-            break;
-		case QLogger::Fatal:
-            qDebug() << QString("Fatal %1(%2,0x%3): %4").arg(targetName).arg(now).arg(targetAddress).arg(text);
-			break;
-		case QLogger::Error:
-            qDebug() << QString("Error %1(%2,0x%3): %4").arg(targetName).arg(now).arg(targetAddress).arg(text);
-			break;
-		case QLogger::Warn:
-            qDebug() << QString("Warn %1(%2,0x%3): %4").arg(targetName).arg(now).arg(targetAddress).arg(text);
-			break;
-		case QLogger::Info:
-			qDebug() << QString("Info %1(%2,0x%3): %4").arg(targetName).arg(now).arg(targetAddress).arg(text);
-			break;
-		case QLogger::Debug:
-			qDebug() << QString("Debug %1(%2,0x%3): %4").arg(targetName).arg(now).arg(targetAddress).arg(text);
-			break;
-		case QLogger::Trace:
-			qDebug() << QString("Trace %1(%2,0x%3): %4").arg(targetName).arg(now).arg(targetAddress).arg(text);
-			break;
-        case QLogger::All:
-            // Nothing.
-            break;
-	}
+    qDebug() << formatter()->format(logger, level, text);
 }

@@ -8,7 +8,7 @@ QT        = core
 CONFIG   += build_all
 TEMPLATE  = lib
 
-VERSION   = 0.3.5
+VERSION   = 0.5.0
 
 TEMPLATE += fakelib
 TARGET    = $$qtLibraryTarget(QtLog)
@@ -23,17 +23,35 @@ win32 {
 
 HEADERS += \
     ../src/qtlogglobal.h \
-    ../src/qlogger_p.h \
-    ../src/qlogger.h \
-    ../src/qabstractappender.h \
-    ../src/qdbfileappender.h \
+    ../src/qtextfileappender.h \
+    ../src/qsqliteappender.h \
+    ../src/qsimpleformatter.h \
+    ../src/qrootloggerfactory.h \
+    ../src/qrootlogger.h \
+    ../src/qobjectloggerfactory.h \
+    ../src/qobjectlogger.h \
     ../src/qconsoleappender.h \
-    ../src/qtextfileappender.h
+    ../src/qabstractlogger.h \
+    ../src/qabstractformatter.h \
+    ../src/qabstractappender.h \
+    ../src/private/qobject_p.h \
+    ../src/private/qabstractlogger_p.h \
+    ../src/private/qabstractformatter_p.h \
+    ../src/private/qabstractappender_p.h
 
 SOURCES += \
-    ../src/qlogger_p.cpp \
-    ../src/qlogger.cpp \
-    ../src/qabstractappender.cpp \
-    ../src/qdbfileappender.cpp \
+    ../src/qtextfileappender.cpp \
+    ../src/qsqliteappender.cpp \
+    ../src/qsimpleformatter.cpp \
+    ../src/qrootloggerfactory.cpp \
+    ../src/qrootlogger.cpp \
+    ../src/qobjectloggerfactory.cpp \
+    ../src/qobjectlogger.cpp \
     ../src/qconsoleappender.cpp \
-    ../src/qtextfileappender.cpp
+    ../src/qabstractlogger.cpp \
+    ../src/qabstractformatter.cpp \
+    ../src/qabstractappender.cpp \
+    ../src/main.cpp \
+    ../src/private/qabstractlogger_p.cpp \
+    ../src/private/qabstractformatter_p.cpp \
+    ../src/private/qabstractappender_p.cpp
