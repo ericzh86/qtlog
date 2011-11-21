@@ -10,7 +10,6 @@ TEMPLATE = app
 
 DESTDIR  = ../../bin
 
-INCLUDEPATH += ../../include
 LIBS    += -l../../lib/QtLogd0
 
 SOURCES += main.cpp \
