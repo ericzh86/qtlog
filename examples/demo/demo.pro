@@ -19,6 +19,6 @@ HEADERS += mainwindow.h
 
 FORMS   += mainwindow.ui
 
-MOC_DIR =        ../../tmp
-OBJECTS_DIR =    ../../tmp
-UI_HEADERS_DIR = ../../tmp
+MOC_DIR =        ../../tmp/demo
+OBJECTS_DIR =    ../../tmp/demo
+UI_HEADERS_DIR = ../../tmp/demo

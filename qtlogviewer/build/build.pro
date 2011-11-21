@@ -41,7 +41,7 @@ RESOURCES += \
 
 TRANSLATIONS += qlogviewer_zh.ts
 
-MOC_DIR =        ../../tmp
-OBJECTS_DIR =    ../../tmp
-UI_HEADERS_DIR = ../../tmp
-RCC_DIR =        ../../tmp
+MOC_DIR =        ../../tmp/qlogviewer
+OBJECTS_DIR =    ../../tmp/qlogviewer
+UI_HEADERS_DIR = ../../tmp/qlogviewer
+RCC_DIR =        ../../tmp/qlogviewer
