@@ -1,0 +1,3 @@
+#include "qlogviewer.h"
+
+IDI_ICON1               ICON                    "qlogviewer.ico"

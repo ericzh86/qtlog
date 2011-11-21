@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>execute.png</file>
+        <file>level_all.png</file>
+        <file>level_debug.png</file>
+        <file>level_error.png</file>
+        <file>level_fatal.png</file>
+        <file>level_info.png</file>
+        <file>level_off.png</file>
+        <file>level_trace.png</file>
+        <file>level_warn.png</file>
+    </qresource>
+</RCC>
