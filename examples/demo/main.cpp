@@ -1,6 +1,9 @@
 #include <QtGui/QApplication>
 #include "mainwindow.h"
-#include <QtLog/QtLog>
+
+#include "../../include/QtLog/QtLog"
+// 如果安装到Qt的SDK目录, 可以按照下面的写法
+// #include <QtLog/QtLog>
 
 int main(int argc, char *argv[])
 {
@@ -26,7 +29,7 @@ int main(int argc, char *argv[])
     // 将记录级别修改为全部记录.
     QtLog::rootLogger()->setLevels(QtLog::All);
     // SQLITE数据库文件.
-    QSQLiteAppender dbfileAppender(QString("test.any"));
+    QSQLiteAppender dbfileAppender(QString("demo.any"));
     // 添加进去.
     QtLog::rootLogger()->addAppender(&dbfileAppender);
 

@@ -2,7 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QtLog/QtLog>
+#include "../../include/QtLog/QtLog"
+// 如果安装到Qt的SDK目录, 可以按照下面的写法
+// #include <QtLog/QtLog>
 
 namespace Ui {
     class MainWindow;

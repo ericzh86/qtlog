@@ -21,6 +21,10 @@ win32 {
     DLLDESTDIR = ../bin
 }
 
+MOC_DIR =        ../tmp
+OBJECTS_DIR =    ../tmp
+UI_HEADERS_DIR = ../tmp
+
 HEADERS += \
     ../src/qtlogglobal.h \
     ../src/qtextfileappender.h \
