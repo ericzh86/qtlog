@@ -1,6 +1,6 @@
 #include "logitemdelegate.h"
 
-#include "./../QtLog/qlogger.h"
+#include "../../include/QtLog/QtLog"
 
 #include <QPainter>
 
@@ -28,7 +28,7 @@ void LogItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &optio
 	int level = index.model()->data(index).toInt();
 
 	switch (level) {
-		case QLogger::Fatal:
+        case QtLog::Fatal:
 			{
                 text = QObject::tr("Fatal");
 
@@ -36,7 +36,7 @@ void LogItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &optio
 				backgroundColor = QColor(105, 105, 105);
 			}
 			break;
-		case QLogger::Error:
+        case QtLog::Error:
 			{
                 text = QObject::tr("Error");
 
@@ -44,7 +44,7 @@ void LogItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &optio
 				backgroundColor = QColor(255, 48, 48);
 			}
 			break;
-		case QLogger::Warn:
+        case QtLog::Warn:
 			{
                 text = QObject::tr("Warn");
 
@@ -52,7 +52,7 @@ void LogItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &optio
 				backgroundColor = QColor(255, 255, 0);
 			}
 			break;
-		case QLogger::Info:
+        case QtLog::Info:
 			{
                 text = QObject::tr("Info");
 
@@ -60,7 +60,7 @@ void LogItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &optio
 				backgroundColor = QColor(151, 255, 255);
 			}
 			break;
-		case QLogger::Debug:
+        case QtLog::Debug:
 			{
                 text = QObject::tr("Debug");
 
@@ -68,7 +68,7 @@ void LogItemDelegate::paint(QPainter *painter, const QStyleOptionViewItem &optio
 				backgroundColor = QColor(245, 255, 250);
 			}
 			break;
-		case QLogger::Trace:
+        case QtLog::Trace:
 			{
                 text = QObject::tr("Trace");
 

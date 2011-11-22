@@ -5,7 +5,7 @@
 QueryToolBar::QueryToolBar(QWidget *parent)
 	: QToolBar(parent)
 {
-	m_levels = QLogger::All;
+    m_levels = QtLog::All;
 
 	m_offButton = new QToolButton(this);
 	this->addWidget(m_offButton);
@@ -84,7 +84,7 @@ void QueryToolBar::setLevelOff()
 	m_debugButton->setChecked(false);
 	m_traceButton->setChecked(false);
 
-	m_levels = QLogger::Off;
+    m_levels = QtLog::Off;
 	m_executeButton->setEnabled(false);
 }
 
@@ -97,31 +97,31 @@ void QueryToolBar::setLevelAll()
 	m_debugButton->setChecked(true);
 	m_traceButton->setChecked(true);
 
-	m_levels = QLogger::All;
+    m_levels = QtLog::All;
 	m_executeButton->setEnabled(true);
 }
 
 void QueryToolBar::checkTest()
 {
-	m_levels = QLogger::Off;
+    m_levels = QtLog::Off;
 
 	if (m_fatalButton->isChecked())
-		m_levels |= QLogger::Fatal;
+        m_levels |= QtLog::Fatal;
 
 	if (m_errorButton->isChecked())
-		m_levels |= QLogger::Error;
+        m_levels |= QtLog::Error;
 
 	if (m_warnButton->isChecked())
-		m_levels |= QLogger::Warn;
+        m_levels |= QtLog::Warn;
 
 	if (m_infoButton->isChecked())
-		m_levels |= QLogger::Info;
+        m_levels |= QtLog::Info;
 
 	if (m_debugButton->isChecked())
-		m_levels |= QLogger::Debug;
+        m_levels |= QtLog::Debug;
 
 	if (m_traceButton->isChecked())
-		m_levels |= QLogger::Trace;
+        m_levels |= QtLog::Trace;
 
 	m_executeButton->setEnabled(m_levels ? true: false);
 }

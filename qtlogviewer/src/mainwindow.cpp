@@ -60,7 +60,7 @@ MainWindow::MainWindow(QWidget *parent)
     this->addToolBar(Qt::LeftToolBarArea, queryToolBar);
     queryToolBar->setFloatable(false);
     queryToolBar->setMovable(false);
-    connect(queryToolBar, SIGNAL(requestChanged(QLogger::Levels)), this, SLOT(queryLogs(QLogger::Levels)));
+    connect(queryToolBar, SIGNAL(requestChanged(QtLog::Levels)), this, SLOT(queryLogs(QtLog::Levels)));
 }
 
 MainWindow::~MainWindow()
@@ -154,7 +154,7 @@ void MainWindow::loadFile(const QString &fileName)
         if (m_sqlite.open()) {
             queryClassNames();
             queryObjectNames();
-            queryLogs(QLogger::All);
+            queryLogs(QtLog::All);
         }
     } else if (fileFlag == "QtLog format v1") {
         QString tmpFileName = fileName + ".tmp";
@@ -181,7 +181,7 @@ void MainWindow::loadFile(const QString &fileName)
         //
         queryClassNames();
         queryObjectNames();
-        queryLogs(QLogger::All);
+        queryLogs(QtLog::All);
 
         // it doesn't work.
         // setWindowTitle(QString("qlogviewer - %1").arg(fileName));
@@ -237,7 +237,7 @@ void MainWindow::setObjectName(const QString &name)
     }
 }
 
-void MainWindow::queryLogs(QLogger::Levels levels)
+void MainWindow::queryLogs(QLogLevels levels)
 {
     if (!m_sqlite.isOpen())
         return;

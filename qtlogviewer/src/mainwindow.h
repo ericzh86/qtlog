@@ -7,7 +7,7 @@ class QComboBox;
 class QTableView;
 class QSqlQueryModel;
 
-#include "./../QtLog/qlogger.h"
+#include "../../include/QtLog/QtLog"
 
 #include <QMainWindow>
 
@@ -52,7 +52,7 @@ private:
     void queryObjectNames();
 
 private slots:
-    void queryLogs(QLogger::Levels levels);
+    void queryLogs(QLogLevels levels);
 };
 
 #endif//MAINWINDOW_H

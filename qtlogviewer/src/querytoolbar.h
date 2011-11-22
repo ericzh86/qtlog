@@ -3,7 +3,7 @@
 
 class QToolButton;
 
-#include "./../QtLog/qlogger.h"
+#include "../../include/QtLog/QtLog"
 
 #include <QToolBar>
 
@@ -38,9 +38,9 @@ private slots:
 	void checkTest();
 
 signals:
-    void requestChanged(QLogger::Levels);
+    void requestChanged(QLogLevels);
 private:
-	QLogger::Levels m_levels;
+    QLogLevels m_levels;
 private slots:
 	void execute();
 };
