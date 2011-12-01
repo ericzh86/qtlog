@@ -34,7 +34,7 @@ QSimpleFormatter::QSimpleFormatter(bool wrapEnabled, QObject *parent)
 #include <QDateTime>
 
 #if defined(Q_OS_WIN)
-QString wordWrap = QString::fromLatin1("\n\r");
+QString wordWrap = QString::fromLatin1("\r\n");
 #endif
 #if defined(Q_OS_MAC)
 QString wordWrap = QString::fromLatin1("\r");
