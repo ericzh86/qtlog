@@ -1,11 +1,8 @@
 #include "mainwindow.h"
-#include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
+MainWindow::MainWindow()
+    : QWidget()
 {
-    ui->setupUi(this);
 
     // 每个对象可以指定自己的记录级别, 如果不设置就使用RootLogger的级别.
     logger()->setLevels(QtLog::All);
@@ -13,9 +10,4 @@ MainWindow::MainWindow(QWidget *parent)
     logger()->addAppender(new QTextFileAppender(QString("demo.txt"), this));
     // 这条信息将会被记录下来. 判定顺序是ObjectLogger->RootLogger->Appender.
     logger()->warn("This is a warnning message.");
-}
-
-MainWindow::~MainWindow()
-{
-    delete ui;
 }

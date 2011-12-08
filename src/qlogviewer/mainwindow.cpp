@@ -60,7 +60,7 @@ MainWindow::MainWindow(QWidget *parent)
     this->addToolBar(Qt::LeftToolBarArea, queryToolBar);
     queryToolBar->setFloatable(false);
     queryToolBar->setMovable(false);
-    connect(queryToolBar, SIGNAL(requestChanged(QtLog::Levels)), this, SLOT(queryLogs(QtLog::Levels)));
+    connect(queryToolBar, SIGNAL(requestChanged(QLogLevels)), this, SLOT(queryLogs(QLogLevels)));
 }
 
 MainWindow::~MainWindow()
